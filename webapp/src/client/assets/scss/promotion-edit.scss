@@ -1,0 +1,58 @@
+@import "variables.scss";
+
+.promotion {
+    &-edit {
+        overflow: hidden;
+        .ag-grid {
+            margin-top: 0;
+            padding-top: 0;
+        }
+        .col {
+            &-left {
+                overflow-y: auto;
+                height: 100%;
+                .form-control {
+                    width: 36%;
+                    display: inline-block;
+                    padding: 7px 5px;
+                    height: auto;
+                    margin-left: 10px;
+                }
+            }
+        }
+        .col {
+            &-container {
+                // margin-top: 25px;
+                padding: 0 20px;
+                height: 75%;
+                min-height: 500px;
+            }
+            &-header {
+                font-family: Roboto-bold;
+            }
+            &-right {
+                border-left: 1px solid $grey-light;
+            }
+        }
+        .switch {
+            margin-left: 15px;
+        }
+        .input {
+            width: 35%;
+            margin: 0 0 -5px 1px;
+            display: inline-block;
+            vertical-align: middle;
+            .col {
+                &-right {
+                    height: 32px;
+                    width: 100%;
+                    border: 0;
+                }
+            }
+            .form-control {
+                width: 100%;
+                padding: 0;
+            }
+        }
+    }
+}

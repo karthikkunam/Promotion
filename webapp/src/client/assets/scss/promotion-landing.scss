@@ -1,0 +1,17 @@
+.promotion {
+    &-landing {
+        overflow: hidden;
+        .ag {
+            &-grid {
+                margin-top: -70px;
+                padding-top: 70px;
+                &.ag-theme-material {
+                    .ag-root-wrapper {
+                        padding-bottom: 80px;
+                    }
+                }
+            }
+        }
+    }
+}
+

@@ -1,0 +1,733 @@
+{ 
+    "storeOffers":[ 
+             { 
+                "offer_id":1,
+                "participate":"Y",
+                "bold_row":true,
+                "change_reason":"Price Changed",
+                "change_effective_date":"2020-11-29T23:59:59Z",
+                "offer_name":"PRM 12 oz Fruit 2/$2.50",
+                "offer_description":"PROMO Get 2 12oz Drink for $2.50",
+                "offer_srp_markdown":800,
+                "offer_crp_markdown":850,
+                "start_date":"2020-10-28T23:59:59Z",
+                "end_date":"2020-12-31T23:59:59Z",
+                "items_applied":[ 
+                   "300827",
+                   "300828",
+                   "300829",
+                   "300830",
+                   "300831",
+                   "300832",
+                   "3000910",
+                   "3000911"
+                ],
+                "editable_fields":{ 
+                   "offer_crp_markdown":true,
+                   "participate":true
+                }
+             },
+             { 
+                "offer_id":2,
+                "participate":"N",
+                "change_reason":"Date Changed",
+                "change_effective_date":"2019-11-30T23:59:59Z",
+                "offer_name":"PRM 12 oz Drink 2/$2.50",
+                "offer_description":"PROMO Get 2 12oz Drink for $2.50",
+                "offer_srp_markdown":800,
+                "offer_crp_markdown":"",
+                "start_date":"2019-9-28T23:59:59Z",
+                "end_date":"2020-01-31T23:59:59Z",
+                "items_applied":[ 
+                   "300827",
+                   "300828",
+                   "300829",
+                   "300830",
+                   "300831",
+                   "300832"
+                ],
+                "editable_fields":{ 
+                   "offer_crp_markdown":true,
+                   "participate":false
+                }
+             },
+             { 
+                "offer_id":3,
+                "participate":"Y",
+                "bold_row":true,
+                "change_reason":"New Offer",
+                "change_effective_date":"2020-11-30T23:59:59Z",
+                "offer_name":"PRM 12 oz Coffee 2/$2.50",
+                "offer_description":"PROMO Get 2 12oz Drink for $2.50",
+                "offer_srp_markdown":800,
+                "offer_crp_markdown":750.29,
+                "start_date":"2020-10-30T23:59:59Z",
+                "end_date":"2021-02-27T23:59:59Z",
+                "items_applied":[ 
+                   "300827",
+                   "300828",
+                   "300829",
+                   "300830",
+                   "300831",
+                   "300832"
+                ],
+                "editable_fields":{ 
+                   "offer_crp_markdown":true,
+                   "participate":true
+                }
+             },
+             { 
+                "offer_id":4,
+                "participate":"N",
+                "change_reason":"New Offer",
+                "change_effective_date":"2019-11-21T23:59:59Z",
+                "offer_name":"PRM 12 oz Water 2/$2.50",
+                "offer_description":"PROMO Get 2 12oz Drink for $2.50",
+                "offer_srp_markdown":800,
+                "offer_crp_markdown":"",
+                "start_date":"2019-10-21T23:59:59Z",
+                "end_date":"2020-02-01T23:59:59Z",
+                "items_applied":[ 
+                   "300827",
+                   "300828",
+                   "300829",
+                   "300830",
+                   "300831",
+                   "300832"
+                ],
+                "editable_fields":{ 
+                   "offer_crp_markdown":false,
+                   "participate":false
+                }
+             },
+             { 
+               "offer_id":5,
+               "participate":"N",
+               "change_reason":"New Offer",
+               "change_effective_date":"2019-11-21T23:59:59Z",
+               "offer_name":"PRM 12 oz Water 2/$2.50",
+               "offer_description":"PROMO Get 2 12oz Drink for $2.50",
+               "offer_srp_markdown":800,
+               "offer_crp_markdown":"",
+               "start_date":"2019-10-21T23:59:59Z",
+               "end_date":"2020-02-01T23:59:59Z",
+               "items_applied":[ 
+                  "300827",
+                  "300828",
+                  "300829",
+                  "300830",
+                  "300831",
+                  "300832"
+               ],
+               "editable_fields":{ 
+                  "offer_crp_markdown":false,
+                  "participate":false
+               }
+            },
+            { 
+               "offer_id":6,
+               "participate":"N",
+               "change_reason":"New Offer",
+               "change_effective_date":"2019-11-21T23:59:59Z",
+               "offer_name":"PRM 12 oz Water 2/$2.50",
+               "offer_description":"PROMO Get 2 12oz Drink for $2.50",
+               "offer_srp_markdown":800,
+               "offer_crp_markdown":"",
+               "start_date":"2019-10-21T23:59:59Z",
+               "end_date":"2020-02-01T23:59:59Z",
+               "items_applied":[ 
+                  "300827",
+                  "300828",
+                  "300829",
+                  "300830",
+                  "300831",
+                  "300832"
+               ],
+               "editable_fields":{ 
+                  "offer_crp_markdown":false,
+                  "participate":false
+               }
+            },
+            { 
+               "offer_id":7,
+               "participate":"N",
+               "change_reason":"New Offer",
+               "change_effective_date":"2019-11-21T23:59:59Z",
+               "offer_name":"PRM 12 oz Water 2/$2.50",
+               "offer_description":"PROMO Get 2 12oz Drink for $2.50",
+               "offer_srp_markdown":800,
+               "offer_crp_markdown":"",
+               "start_date":"2019-10-21T23:59:59Z",
+               "end_date":"2020-02-01T23:59:59Z",
+               "items_applied":[ 
+                  "300827",
+                  "300828",
+                  "300829",
+                  "300830",
+                  "300831",
+                  "300832"
+               ],
+               "editable_fields":{ 
+                  "offer_crp_markdown":false,
+                  "participate":false
+               }
+            },
+            { 
+               "offer_id":8,
+               "participate":"N",
+               "change_reason":"New Offer",
+               "change_effective_date":"2019-11-21T23:59:59Z",
+               "offer_name":"PRM 12 oz Water 2/$2.50",
+               "offer_description":"PROMO Get 2 12oz Drink for $2.50",
+               "offer_srp_markdown":800,
+               "offer_crp_markdown":"",
+               "start_date":"2019-10-21T23:59:59Z",
+               "end_date":"2020-02-01T23:59:59Z",
+               "items_applied":[ 
+                  "300827",
+                  "300828",
+                  "300829",
+                  "300830",
+                  "300831",
+                  "300832"
+               ],
+               "editable_fields":{ 
+                  "offer_crp_markdown":false,
+                  "participate":false
+               }
+            },
+            { 
+               "offer_id":9,
+               "participate":"N",
+               "change_reason":"New Offer",
+               "change_effective_date":"2019-11-21T23:59:59Z",
+               "offer_name":"PRM 12 oz Water 2/$2.50",
+               "offer_description":"PROMO Get 2 12oz Drink for $2.50",
+               "offer_srp_markdown":800,
+               "offer_crp_markdown":"",
+               "start_date":"2019-10-21T23:59:59Z",
+               "end_date":"2020-02-01T23:59:59Z",
+               "items_applied":[ 
+                  "300827",
+                  "300828",
+                  "300829",
+                  "300830",
+                  "300831",
+                  "300832"
+               ],
+               "editable_fields":{ 
+                  "offer_crp_markdown":false,
+                  "participate":false
+               }
+            },
+            { 
+               "offer_id":10,
+               "participate":"N",
+               "change_reason":"New Offer",
+               "change_effective_date":"2019-11-21T23:59:59Z",
+               "offer_name":"PRM 12 oz Water 2/$2.50",
+               "offer_description":"PROMO Get 2 12oz Drink for $2.50",
+               "offer_srp_markdown":800,
+               "offer_crp_markdown":"",
+               "start_date":"2019-10-21T23:59:59Z",
+               "end_date":"2020-02-01T23:59:59Z",
+               "items_applied":[ 
+                  "300827",
+                  "300828",
+                  "300829",
+                  "300830",
+                  "300831",
+                  "300832"
+               ],
+               "editable_fields":{ 
+                  "offer_crp_markdown":false,
+                  "participate":false
+               }
+            },
+            { 
+               "offer_id":11,
+               "participate":"N",
+               "change_reason":"New Offer",
+               "change_effective_date":"2019-11-21T23:59:59Z",
+               "offer_name":"PRM 12 oz Water 2/$2.50",
+               "offer_description":"PROMO Get 2 12oz Drink for $2.50",
+               "offer_srp_markdown":800,
+               "offer_crp_markdown":"",
+               "start_date":"2019-10-21T23:59:59Z",
+               "end_date":"2020-02-01T23:59:59Z",
+               "items_applied":[ 
+                  "300827",
+                  "300828",
+                  "300829",
+                  "300830",
+                  "300831",
+                  "300832"
+               ],
+               "editable_fields":{ 
+                  "offer_crp_markdown":false,
+                  "participate":false
+               }
+            },
+            { 
+               "offer_id":12,
+               "participate":"N",
+               "change_reason":"New Offer",
+               "change_effective_date":"2019-11-21T23:59:59Z",
+               "offer_name":"PRM 12 oz Water 2/$2.50",
+               "offer_description":"PROMO Get 2 12oz Drink for $2.50",
+               "offer_srp_markdown":800,
+               "offer_crp_markdown":"",
+               "start_date":"2019-10-21T23:59:59Z",
+               "end_date":"2020-02-01T23:59:59Z",
+               "items_applied":[ 
+                  "300827",
+                  "300828",
+                  "300829",
+                  "300830",
+                  "300831",
+                  "300832"
+               ],
+               "editable_fields":{ 
+                  "offer_crp_markdown":false,
+                  "participate":false
+               }
+            },
+            { 
+               "offer_id":13,
+               "participate":"N",
+               "change_reason":"New Offer",
+               "change_effective_date":"2019-11-21T23:59:59Z",
+               "offer_name":"PRM 12 oz Water 2/$2.50",
+               "offer_description":"PROMO Get 2 12oz Drink for $2.50",
+               "offer_srp_markdown":800,
+               "offer_crp_markdown":"",
+               "start_date":"2019-10-21T23:59:59Z",
+               "end_date":"2020-02-01T23:59:59Z",
+               "items_applied":[ 
+                  "300827",
+                  "300828",
+                  "300829",
+                  "300830",
+                  "300831",
+                  "300832"
+               ],
+               "editable_fields":{ 
+                  "offer_crp_markdown":false,
+                  "participate":false
+               }
+            },
+            { 
+               "offer_id":14,
+               "participate":"N",
+               "change_reason":"New Offer",
+               "change_effective_date":"2019-11-21T23:59:59Z",
+               "offer_name":"PRM 12 oz Water 2/$2.50",
+               "offer_description":"PROMO Get 2 12oz Drink for $2.50",
+               "offer_srp_markdown":800,
+               "offer_crp_markdown":"",
+               "start_date":"2019-10-21T23:59:59Z",
+               "end_date":"2020-02-01T23:59:59Z",
+               "items_applied":[ 
+                  "300827",
+                  "300828",
+                  "300829",
+                  "300830",
+                  "300831",
+                  "300832"
+               ],
+               "editable_fields":{ 
+                  "offer_crp_markdown":false,
+                  "participate":false
+               }
+            },
+            { 
+               "offer_id":15,
+               "participate":"N",
+               "change_reason":"New Offer",
+               "change_effective_date":"2019-11-21T23:59:59Z",
+               "offer_name":"PRM 12 oz Water 2/$2.50",
+               "offer_description":"PROMO Get 2 12oz Drink for $2.50",
+               "offer_srp_markdown":800,
+               "offer_crp_markdown":"",
+               "start_date":"2019-10-21T23:59:59Z",
+               "end_date":"2020-02-01T23:59:59Z",
+               "items_applied":[ 
+                  "300827",
+                  "300828",
+                  "300829",
+                  "300830",
+                  "300831",
+                  "300832"
+               ],
+               "editable_fields":{ 
+                  "offer_crp_markdown":false,
+                  "participate":false
+               }
+            }
+      
+    ],
+    "storeOffersDetails":[ 
+      { 
+         "offer_id":1,
+         "participate":true,
+         "change_reason":"Price Changed",
+         "change_effective_date":"2020-11-29T23:59:59Z",
+         "offer_name":"PRM 12 oz Fruit 2/$2.50",
+         "offer_description":"PROMO Get 2 12oz Drink for $2.50",
+         "offer_srp_markdown":800,
+         "offer_crp_markdown":850,
+         "start_date":"2020-10-30T23:59:59Z",
+         "end_date":"2020-12-31T23:59:59Z",
+         "items_applied":[ 
+            "300827",
+            "300828",
+            "300829",
+            "300830",
+            "300831",
+            "300832",
+            "3000910",
+            "3000911"
+         ],
+         "editable_fields":{ 
+            "offer_crp_markdown":true,
+            "participate":true
+         }
+      },
+      { 
+         "offer_id":2,
+         "participate":false,
+         "change_reason":"Date Changed",
+         "change_effective_date":"2020-11-29T23:59:59Z",
+         "offer_name":"PRM 12 oz Drink 2/$2.50",
+         "offer_description":"PROMO Get 2 12oz Drink for $2.50",
+         "offer_srp_markdown":700,
+         "offer_crp_markdown":"",
+         "start_date":"2020-11-29T23:59:59Z",
+         "end_date":"2021-01-31T23:59:59Z",
+         "items_applied":[ 
+            "300827",
+            "300828",
+            "300829",
+            "300830",
+            "300831",
+            "300832"
+         ],
+         "editable_fields":{ 
+            "offer_crp_markdown":true,
+            "participate":false
+         }
+      },
+      { 
+         "offer_id":3,
+         "participate":true,
+         "change_reason":"New Offer",
+         "change_effective_date":"2019-11-30T23:59:59Z",
+         "offer_name":"PRM 12 oz Coffee 2/$2.50",
+         "offer_description":"PROMO Get 2 12oz Drink for $2.50",
+         "offer_srp_markdown":600,
+         "offer_crp_markdown":750.29,
+         "start_date":"2019-10-30T23:59:59Z",
+         "end_date":"2020-02-27T23:59:59Z",
+         "items_applied":[ 
+            "300827",
+            "300828",
+            "300829",
+            "300830",
+            "300831",
+            "300832"
+         ],
+         "editable_fields":{ 
+            "offer_crp_markdown":true, 
+            "participate":true
+         }
+      },
+      { 
+         "offer_id":4,
+         "participate":false,
+         "change_reason":"New Offer",
+         "change_effective_date":"2019-11-21T23:59:59Z",
+         "offer_name":"PRM 12 oz Water 2/$2.50",
+         "offer_description":"PROMO Get 2 12oz Drink for $2.50",
+         "offer_srp_markdown":900,
+         "offer_crp_markdown":"",
+         "start_date":"2019-10-30T23:59:59Z",
+         "end_date":"2020-02-01T23:59:59Z",
+         "items_applied":[ 
+            "300827",
+            "300828",
+            "300829",
+            "300830",
+            "300831",
+            "300832"
+         ],
+         "editable_fields":{ 
+            "offer_crp_markdown":false,
+            "participate":false
+         }
+      },
+      { 
+         "offer_id":5,
+         "participate":"N",
+         "change_reason":"New Offer",
+         "change_effective_date":"2019-11-21T23:59:59Z",
+         "offer_name":"PRM 12 oz Water 2/$2.50",
+         "offer_description":"PROMO Get 2 12oz Drink for $2.50",
+         "offer_srp_markdown":800,
+         "offer_crp_markdown":"",
+         "start_date":"2019-10-21T23:59:59Z",
+         "end_date":"2020-02-01T23:59:59Z",
+         "items_applied":[ 
+            "300827",
+            "300828",
+            "300829",
+            "300830",
+            "300831",
+            "300832"
+         ],
+         "editable_fields":{ 
+            "offer_crp_markdown":false,
+            "participate":false
+         }
+      },
+      { 
+         "offer_id":6,
+         "participate":"N",
+         "change_reason":"New Offer",
+         "change_effective_date":"2019-11-21T23:59:59Z",
+         "offer_name":"PRM 12 oz Water 2/$2.50",
+         "offer_description":"PROMO Get 2 12oz Drink for $2.50",
+         "offer_srp_markdown":800,
+         "offer_crp_markdown":"",
+         "start_date":"2019-10-21T23:59:59Z",
+         "end_date":"2020-02-01T23:59:59Z",
+         "items_applied":[ 
+            "300827",
+            "300828",
+            "300829",
+            "300830",
+            "300831",
+            "300832"
+         ],
+         "editable_fields":{ 
+            "offer_crp_markdown":false,
+            "participate":false
+         }
+      },
+      { 
+         "offer_id":7,
+         "participate":"N",
+         "change_reason":"New Offer",
+         "change_effective_date":"2019-11-21T23:59:59Z",
+         "offer_name":"PRM 12 oz Water 2/$2.50",
+         "offer_description":"PROMO Get 2 12oz Drink for $2.50",
+         "offer_srp_markdown":800,
+         "offer_crp_markdown":"",
+         "start_date":"2019-10-21T23:59:59Z",
+         "end_date":"2020-02-01T23:59:59Z",
+         "items_applied":[ 
+            "300827",
+            "300828",
+            "300829",
+            "300830",
+            "300831",
+            "300832"
+         ],
+         "editable_fields":{ 
+            "offer_crp_markdown":false,
+            "participate":false
+         }
+      },
+      { 
+         "offer_id":8,
+         "participate":"N",
+         "change_reason":"New Offer",
+         "change_effective_date":"2019-11-21T23:59:59Z",
+         "offer_name":"PRM 12 oz Water 2/$2.50",
+         "offer_description":"PROMO Get 2 12oz Drink for $2.50",
+         "offer_srp_markdown":800,
+         "offer_crp_markdown":"",
+         "start_date":"2019-10-21T23:59:59Z",
+         "end_date":"2020-02-01T23:59:59Z",
+         "items_applied":[ 
+            "300827",
+            "300828",
+            "300829",
+            "300830",
+            "300831",
+            "300832"
+         ],
+         "editable_fields":{ 
+            "offer_crp_markdown":false,
+            "participate":false
+         }
+      },
+      { 
+         "offer_id":9,
+         "participate":"N",
+         "change_reason":"New Offer",
+         "change_effective_date":"2019-11-21T23:59:59Z",
+         "offer_name":"PRM 12 oz Water 2/$2.50",
+         "offer_description":"PROMO Get 2 12oz Drink for $2.50",
+         "offer_srp_markdown":800,
+         "offer_crp_markdown":"",
+         "start_date":"2019-10-21T23:59:59Z",
+         "end_date":"2020-02-01T23:59:59Z",
+         "items_applied":[ 
+            "300827",
+            "300828",
+            "300829",
+            "300830",
+            "300831",
+            "300832"
+         ],
+         "editable_fields":{ 
+            "offer_crp_markdown":false,
+            "participate":false
+         }
+      },
+      { 
+         "offer_id":10,
+         "participate":"N",
+         "change_reason":"New Offer",
+         "change_effective_date":"2019-11-21T23:59:59Z",
+         "offer_name":"PRM 12 oz Water 2/$2.50",
+         "offer_description":"PROMO Get 2 12oz Drink for $2.50",
+         "offer_srp_markdown":800,
+         "offer_crp_markdown":"",
+         "start_date":"2019-10-21T23:59:59Z",
+         "end_date":"2020-02-01T23:59:59Z",
+         "items_applied":[ 
+            "300827",
+            "300828",
+            "300829",
+            "300830",
+            "300831",
+            "300832"
+         ],
+         "editable_fields":{ 
+            "offer_crp_markdown":false,
+            "participate":false
+         }
+      },
+      { 
+         "offer_id":11,
+         "participate":"N",
+         "change_reason":"New Offer",
+         "change_effective_date":"2019-11-21T23:59:59Z",
+         "offer_name":"PRM 12 oz Water 2/$2.50",
+         "offer_description":"PROMO Get 2 12oz Drink for $2.50",
+         "offer_srp_markdown":800,
+         "offer_crp_markdown":"",
+         "start_date":"2019-10-21T23:59:59Z",
+         "end_date":"2020-02-01T23:59:59Z",
+         "items_applied":[ 
+            "300827",
+            "300828",
+            "300829",
+            "300830",
+            "300831",
+            "300832"
+         ],
+         "editable_fields":{ 
+            "offer_crp_markdown":false,
+            "participate":false
+         }
+      },
+      { 
+         "offer_id":12,
+         "participate":"N",
+         "change_reason":"New Offer",
+         "change_effective_date":"2019-11-21T23:59:59Z",
+         "offer_name":"PRM 12 oz Water 2/$2.50",
+         "offer_description":"PROMO Get 2 12oz Drink for $2.50",
+         "offer_srp_markdown":800,
+         "offer_crp_markdown":"",
+         "start_date":"2019-10-21T23:59:59Z",
+         "end_date":"2020-02-01T23:59:59Z",
+         "items_applied":[ 
+            "300827",
+            "300828",
+            "300829",
+            "300830",
+            "300831",
+            "300832"
+         ],
+         "editable_fields":{ 
+            "offer_crp_markdown":false,
+            "participate":false
+         }
+      },
+      { 
+         "offer_id":13,
+         "participate":"N",
+         "change_reason":"New Offer",
+         "change_effective_date":"2019-11-21T23:59:59Z",
+         "offer_name":"PRM 12 oz Water 2/$2.50",
+         "offer_description":"PROMO Get 2 12oz Drink for $2.50",
+         "offer_srp_markdown":800,
+         "offer_crp_markdown":"",
+         "start_date":"2019-10-21T23:59:59Z",
+         "end_date":"2020-02-01T23:59:59Z",
+         "items_applied":[ 
+            "300827",
+            "300828",
+            "300829",
+            "300830",
+            "300831",
+            "300832"
+         ],
+         "editable_fields":{ 
+            "offer_crp_markdown":false,
+            "participate":false
+         }
+      },
+      { 
+         "offer_id":14,
+         "participate":"N",
+         "change_reason":"New Offer",
+         "change_effective_date":"2019-11-21T23:59:59Z",
+         "offer_name":"PRM 12 oz Water 2/$2.50",
+         "offer_description":"PROMO Get 2 12oz Drink for $2.50",
+         "offer_srp_markdown":800,
+         "offer_crp_markdown":"",
+         "start_date":"2019-10-21T23:59:59Z",
+         "end_date":"2020-02-01T23:59:59Z",
+         "items_applied":[ 
+            "300827",
+            "300828",
+            "300829",
+            "300830",
+            "300831",
+            "300832"
+         ],
+         "editable_fields":{ 
+            "offer_crp_markdown":false,
+            "participate":false
+         }
+      },
+      { 
+         "offer_id":15,
+         "participate":"N",
+         "change_reason":"New Offer",
+         "change_effective_date":"2019-11-21T23:59:59Z",
+         "offer_name":"PRM 12 oz Water 2/$2.50",
+         "offer_description":"PROMO Get 2 12oz Drink for $2.50",
+         "offer_srp_markdown":800,
+         "offer_crp_markdown":"",
+         "start_date":"2019-10-21T23:59:59Z",
+         "end_date":"2020-02-01T23:59:59Z",
+         "items_applied":[ 
+            "300827",
+            "300828",
+            "300829",
+            "300830",
+            "300831",
+            "300832"
+         ],
+         "editable_fields":{ 
+            "offer_crp_markdown":false,
+            "participate":false
+         }
+      }
+   ]
+ }

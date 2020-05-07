@@ -1,0 +1,14 @@
+@import "variables.scss";
+
+.modal {
+    &-dialog {
+        top: 100px;
+        &.message-box {
+            .modal-footer {
+                .btn-success {
+                    color: $white;
+                }
+            }
+        }
+    }
+}

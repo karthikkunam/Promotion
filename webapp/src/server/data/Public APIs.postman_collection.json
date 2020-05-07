@@ -1,0 +1,1244 @@
+{
+	"info": {
+		"_postman_id": "1d008d8d-7cfc-4ad1-a7d3-d73fadf3c121",
+		"name": "Public APIs",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Authentication / Login",
+			"item": [
+				{
+					"name": "oAUth",
+					"item": [
+						{
+							"name": "oAuth Login",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "9ee6cb09-45d0-458b-aa69-e264c3f11d17",
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "df556f2e-0eb1-4936-9045-a4a651aaa22a",
+										"exec": [
+											"pm.test(\"200 Status Code\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"var data = JSON.parse(responseBody);",
+											"",
+											"pm.test(\"Keys Exist\", function() {",
+											"    pm.expect(data).to.have.property('access_token');",
+											"    pm.expect(data).to.have.property('expires_in');",
+											"    pm.expect(data).to.have.property('token_type');",
+											"    pm.expect(data).to.have.property('scope');",
+											"    pm.expect(data).to.have.property('refresh_token');",
+											"});",
+											"",
+											"pm.globals.set('current.platform.token', data.access_token);",
+											"pm.globals.set('current.platform.refresh', data.refresh_token);",
+											"",
+											"pm.globals.set('current.oauth.token', data.access_token);",
+											"pm.globals.set('current.oauth.refresh', data.refresh_token);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"grant_type\": \"password\",\n\t\"username\": \"{{current.user.email}}\",\n\t\"password\": \"{{current.user.password}}\",\n\t\"client_id\": \"{{current.platform.client_id}}\",\n\t\"client_secret\": \"{{current.platform.client_secret}}\"\n}"
+								},
+								"url": {
+									"raw": "{{api_url}}/auth/token/",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"auth",
+										"token",
+										""
+									]
+								},
+								"description": "Login as a user with the oAuth mechanism"
+							},
+							"response": [
+								{
+									"name": "200 Sucess",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n\t\"grant_type\": \"password\",\n\t\"username\": \"{{current.user.email}}\",\n\t\"password\": \"{{current.user.password}}\",\n\t\"client_id\": \"{{current.platform.client_id}}\",\n\t\"client_secret\": \"{{current.platform.client_secret}}\"\n}"
+										},
+										"url": {
+											"raw": "{{api_url}}/auth/token/",
+											"host": [
+												"{{api_url}}"
+											],
+											"path": [
+												"auth",
+												"token",
+												""
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Server",
+											"value": "nginx"
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 08 Oct 2019 21:48:13 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Content-Length",
+											"value": "385"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Allow",
+											"value": "POST, OPTIONS"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "SAMEORIGIN"
+										},
+										{
+											"key": "Vary",
+											"value": "Authorization, Cookie, Origin"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"access_token\": \"wR08DzNHmeFuuEgSKcM83mQ7iigurv\",\n    \"expires_in\": 86400,\n    \"token_type\": \"Bearer\",\n    \"scope\": \"read_profile update_profile read_config read_rewards write_rewards read_promotions read_stores read_surveys write_surveys read_promotions reset_password write_feedback read_feedback write_arbitrations read_fuel write_fuel read_messages\",\n    \"refresh_token\": \"uwUB0Ebvo3VXqyHyRIaNhKfaxDohzl\"\n}"
+								}
+							]
+						},
+						{
+							"name": "oAuth Refresh",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "5e859dc7-2269-4438-8bd3-3510ea925d27",
+										"exec": [
+											"pm.test(\"200 Status Code\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"var data = JSON.parse(responseBody);",
+											"",
+											"pm.test(\"Keys Exist\", function() {",
+											"    pm.expect(data).to.have.property('access_token');",
+											"    pm.expect(data).to.have.property('expires_in');",
+											"    pm.expect(data).to.have.property('token_type');",
+											"    pm.expect(data).to.have.property('scope');",
+											"    pm.expect(data).to.have.property('refresh_token');",
+											"});",
+											"",
+											"",
+											"pm.globals.set('current.platform.token', data.access_token)",
+											"pm.globals.set('current.platform.refresh', data.refresh_token)",
+											"",
+											"pm.globals.set('current.oauth.token', data.access_token);",
+											"pm.globals.set('current.oauth.refresh', data.refresh_token);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"grant_type\": \"refresh_token\",\n\t\"refresh_token\": \"{{current.oauth.refresh}}\",\n\t\"client_id\": \"{{current.platform.client_id}}\",\n\t\"client_secret\": \"{{current.platform.client_secret}}\"\n}"
+								},
+								"url": {
+									"raw": "{{api_url}}/auth/token/",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"auth",
+										"token",
+										""
+									]
+								},
+								"description": "Login as a user with the oAuth mechanism"
+							},
+							"response": []
+						},
+						{
+							"name": "oAuth Anon Creds",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "9ee6cb09-45d0-458b-aa69-e264c3f11d17",
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "df556f2e-0eb1-4936-9045-a4a651aaa22a",
+										"exec": [
+											"pm.test(\"200 Status Code\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"var data = JSON.parse(responseBody);",
+											"",
+											"pm.test(\"Keys Exist\", function() {",
+											"    pm.expect(data).to.have.property('access_token');",
+											"    pm.expect(data).to.have.property('expires_in');",
+											"    pm.expect(data).to.have.property('token_type');",
+											"    pm.expect(data).to.have.property('scope');",
+											"});",
+											"",
+											"pm.globals.set('current.platform.token', data.access_token);",
+											"pm.globals.set('current.platform.refresh', data.refresh_token);",
+											"",
+											"pm.globals.set('current.oauth.token', data.access_token);",
+											"pm.globals.set('current.oauth.refresh', data.refresh_token);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"grant_type\": \"client_credentials\",\n\t\"client_id\": \"{{current.platform.client_id}}\",\n\t\"client_secret\": \"{{current.platform.client_secret}}\"\n}"
+								},
+								"url": {
+									"raw": "{{api_url}}/auth/token/",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"auth",
+										"token",
+										""
+									]
+								},
+								"description": "Get anonymous credentials via oAuth"
+							},
+							"response": [
+								{
+									"name": "200 Sucess",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n\t\"grant_type\": \"password\",\n\t\"username\": \"{{current.user.email}}\",\n\t\"password\": \"{{current.user.password}}\",\n\t\"client_id\": \"{{current.platform.client_id}}\",\n\t\"client_secret\": \"{{current.platform.client_secret}}\"\n}"
+										},
+										"url": {
+											"raw": "{{api_url}}/auth/token/",
+											"host": [
+												"{{api_url}}"
+											],
+											"path": [
+												"auth",
+												"token",
+												""
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Server",
+											"value": "nginx"
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 08 Oct 2019 21:48:13 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Content-Length",
+											"value": "385"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Allow",
+											"value": "POST, OPTIONS"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "SAMEORIGIN"
+										},
+										{
+											"key": "Vary",
+											"value": "Authorization, Cookie, Origin"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"access_token\": \"wR08DzNHmeFuuEgSKcM83mQ7iigurv\",\n    \"expires_in\": 86400,\n    \"token_type\": \"Bearer\",\n    \"scope\": \"read_profile update_profile read_config read_rewards write_rewards read_promotions read_stores read_surveys write_surveys read_promotions reset_password write_feedback read_feedback write_arbitrations read_fuel write_fuel read_messages\",\n    \"refresh_token\": \"uwUB0Ebvo3VXqyHyRIaNhKfaxDohzl\"\n}"
+								}
+							]
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "JWT",
+					"item": [
+						{
+							"name": "JWT Login (WIP)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "02ff6af7-3c5c-4bdc-afcb-7b4804884e19",
+										"exec": [
+											"pm.test(\"200 Status Code\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"var data = JSON.parse(responseBody);",
+											"",
+											"pm.test(\"Has Correct Data Fields\", function() {",
+											"    pm.expect(data).to.have.property('jwt_token');",
+											"    pm.expect(data).to.have.property('refresh_token');",
+											"});",
+											"",
+											"",
+											"",
+											"pm.globals.set('current.platform.token', data.jwt_token)",
+											"pm.globals.set('current.platform.refresh', data.refresh_token)",
+											"",
+											"pm.globals.set('current.jwt.token', data.jwt_token)",
+											"pm.globals.set('current.jwt.refresh', data.refresh_token)"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"grant_type\": \"password\",\n\t\"username\": \"{{current.user.email}}\",\n\t\"password\": \"{{current.user.password}}\",\n\t\"client_id\": \"{{current.platform.client_id}}\",\n\t\"client_secret\": \"{{current.platform.client_secret}}\"\n}"
+								},
+								"url": {
+									"raw": "{{api_url}}/auth/jwt/token",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"auth",
+										"jwt",
+										"token"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "JWT Refresh (WIP)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "0adddd83-efdc-478f-b087-42a24f4f9c72",
+										"exec": [
+											"pm.test(\"200 Status Code\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"var data = JSON.parse(responseBody);",
+											"",
+											"pm.test(\"Has Correct Data Fields\", function() {",
+											"    pm.expect(data).to.have.property('jwt_token');",
+											"    pm.expect(data).to.have.property('refresh_token');",
+											"});",
+											"",
+											"",
+											"pm.globals.set('current.platform.token', data.jwt_token);",
+											"pm.globals.set('current.platform.refresh', data.refresh_token);",
+											"",
+											"pm.globals.set('current.jwt.token', data.jwt_token)",
+											"pm.globals.set('current.jwt.refresh', data.refresh_token)"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"refresh_token\": \"{{current.jwt.refresh}}\",\n\t\"grant_type\": \"refresh_token\",\n\t\"client_id\": \"{{current.platform.client_id}}\",\n\t\"client_secret\": \"{{current.platform.client_secret}}\"\n}"
+								},
+								"url": {
+									"raw": "{{api_url}}/auth/jwt/token",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"auth",
+										"jwt",
+										"token"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Auth Flow (WIP)",
+					"item": [
+						{
+							"name": "Auth Start",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"mobile_number\": \"\",\n\t\"fb_access_token\": \"\",\n\t\"email\": \"\"\n}"
+								},
+								"url": {
+									"raw": "{{api_url}}/auth/start/",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"auth",
+										"start",
+										""
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Auth Start",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n\t\"mobile_number\": \"\",\n\t\"fb_access_token\": \"\",\n\t\"email\": \"\"\n}"
+										},
+										"url": {
+											"raw": "{{api_url}}/auth/start/",
+											"host": [
+												"{{api_url}}"
+											],
+											"path": [
+												"auth",
+												"start",
+												""
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json",
+											"description": "",
+											"type": "text"
+										}
+									],
+									"cookie": [],
+									"body": "{\n\t\"flow_action\": \"registration\",\n\t\"flow_id\": \"legacy_reg_flow\",\n\t\"flow_token\": \"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\",\n\t\"flow_submit_path\": \"/v5/users\",\n\t\"section_count\": 2,\n\t\"sections\": [\n\t\t{\n\t\t\t\"title\": \"Whole Screen or Section Title Here\",\n\t\t\t\"description\": \"maybe a longer description or tagline for what we need and why we need it.\",\n\t\t\t\"form\": {\n\t\t\t\t\"fields\": [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"type\": \"text\",\n\t\t\t\t\t\t\"name\": \"\",\n\t\t\t\t\t\t\"placeholder\": \"\",\n\t\t\t\t\t\t\"alt_text\": \"\"\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"type\": \"button\",\n\t\t\t\t\t\t\"action\": \"submit\"\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t\t}\n\t\t},\n\t\t{\n\t\t\t\"title\": \"\",\n\t\t\t\"description\": \"\",\n\t\t\t\"form\": {\n\t\t\t\t\"fields\": [\n\t\t\t\t\n\t\t\t\t]\n\t\t\t}\n\t\t}\n\t]\n}"
+								}
+							]
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "9beac263-9eee-4bb4-ad6f-2b1a6cbed1e7",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "b9b82afd-c426-43d2-bc15-bf6340249f16",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				}
+			],
+			"auth": {
+				"type": "noauth"
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "a47e0ab6-8390-4a7c-a095-d0fd24d0e6e7",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "88bfa7ce-1dc2-48d2-bbbb-8677e7bd3577",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Accounts",
+			"item": [
+				{
+					"name": "Registration",
+					"item": [
+						{
+							"name": "Create Account",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": ""
+								}
+							},
+							"response": []
+						}
+					],
+					"auth": {
+						"type": "bearer",
+						"bearer": [
+							{
+								"key": "token",
+								"value": "{{current.platform.anon_token}}",
+								"type": "string"
+							}
+						]
+					},
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "cfa21b08-42e9-47e2-8d06-7e0ef387e6cf",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "55be1541-d81b-4ac2-a9be-b182773f2f4c",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Profile",
+					"item": [
+						{
+							"name": "Short Profile",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "bdfb5964-7da7-4fa9-b857-c0e613de19c9",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"var data = pm.response.json();",
+											"",
+											"pm.globals.set('current.user.loyalty_id', data.loyalty_id)",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api_url}}/v4/users/me",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"v4",
+										"users",
+										"me"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Full Profile",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api_url}}/v4/users/me/?profile=full",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"v4",
+										"users",
+										"me",
+										""
+									],
+									"query": [
+										{
+											"key": "profile",
+											"value": "full"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Terms & Conditions",
+					"item": [],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Age Verification",
+					"item": [
+						{
+							"name": "USA",
+							"item": [],
+							"protocolProfileBehavior": {},
+							"_postman_isSubFolder": true
+						},
+						{
+							"name": "Canada",
+							"item": [],
+							"protocolProfileBehavior": {},
+							"_postman_isSubFolder": true
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{current.platform.token}}",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "7a7cf1ee-56bd-4aac-b733-5ab64de27ebc",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "9185d887-9ecb-4f3b-8b83-ac03ea9b2c2e",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Stores",
+			"item": [],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Inventory",
+			"item": [],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Payment",
+			"item": [],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Basket",
+			"item": [],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Store-Offers",
+			"item": [
+				{
+					"name": "Get Offers",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{user_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/ris/store-offers",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"ris",
+								"store-offers"
+							]
+						},
+						"description": "Gives list of promotions for a particular store. https://app.zeplin.io/project/5cf563c15b623413415c820c/screen/5d9f5de3ae6da730a32b50c1"
+					},
+					"response": [
+						{
+							"name": "Get Offers",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "Bearer {{user_token}}"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/ris/store-offers/",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"ris",
+										"store-offers",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n\t\"offers\":[\n\t\t{\n\t\t\t\"offer_id\":1, \n\t\t\t\"participate\": true,\n\t\t\t\"change_reason\": \"Price Changed\",\n\t\t\t\"change_effective_date\": \"2019-11-31T23:59:59Z\",\n\t\t\t\"offer_name\":  \"PRM 12 oz Fruit 2/$2.50\",\n\t\t\t\"offer_description\": \"PROMO Get 2 12oz Drink for $2.50\",\n\t\t\t\"offer_srp_markdown\": 800,\n\t\t\t\"offer_crp_markdown\": 850,\n\t\t\t\"start_date\": \"2019-10-31T23:59:59Z\",\n\t\t\t\"end_date\": \"2019-12-31T23:59:59Z\",\n\t\t\t\"items_applied\": [\n\t\t\t\t\"300827\",\n\t\t\t\t\"300828\",\n\t\t\t\t\"300829\",\n\t\t\t\t\"300830\",\n\t\t\t\t\"300831\",\n\t\t\t\t\"300832\"\n\t\t\t],\n\t\t\t\"editable_fields\": {\n\t\t\t\t\"offer_crp_markdown\": true,\n\t\t\t\t\"participate\": true\n\t\t\t}\n\t\t\t\n\t\t},\n\t\t{\n\t\t\t\"offer_id\":2, \n\t\t\t\"participate\": true,\n\t\t\t\"change_reason\": \"Date Changed\",\n\t\t\t\"change_effective_date\": \"2019-11-31T23:59:59Z\",\n\t\t\t\"offer_name\":  \"PRM 12 oz Drink 2/$2.50\",\n\t\t\t\"offer_description\": \"PROMO Get 2 12oz Drink for $2.50\",\n\t\t\t\"offer_srp_markdown\": 800,\n\t\t\t\"offer_crp_markdown\": null,\n\t\t\t\"start_date\": \"2019-9-31T23:59:59Z\",\n\t\t\t\"end_date\": \"2020-01-31T23:59:59Z\",\n\t\t\t\"items_applied\": [\n\t\t\t\t\"300827\",\n\t\t\t\t\"300828\",\n\t\t\t\t\"300829\",\n\t\t\t\t\"300830\",\n\t\t\t\t\"300831\",\n\t\t\t\t\"300832\"\n\t\t\t],\n\t\t\t\"editable_fields\": {\n\t\t\t\t\"offer_crp_markdown\": true,\n\t\t\t\t\"participate\": true\n\t\t\t}\n\t\t\t\n\t\t},\n\t\t{\n\t\t\t\"offer_id\":3, \n\t\t\t\"participate\": true,\n\t\t\t\"change_reason\": \"New Offer\" ,\n\t\t\t\"change_effective_date\": \"2019-11-31T23:59:59Z\",\n\t\t\t\"offer_name\":  \"PRM 12 oz Coffee 2/$2.50\",\n\t\t\t\"offer_description\": \"PROMO Get 2 12oz Drink for $2.50\",\n\t\t\t\"offer_srp_markdown\": 800,\n\t\t\t\"offer_crp_markdown\": null,\n\t\t\t\"start_date\": \"2019-10-31T23:59:59Z\",\n\t\t\t\"end_date\": \"2020-02-31T23:59:59Z\",\n\t\t\t\"items_applied\": [\n\t\t\t\t\"300827\",\n\t\t\t\t\"300828\",\n\t\t\t\t\"300829\",\n\t\t\t\t\"300830\",\n\t\t\t\t\"300831\",\n\t\t\t\t\"300832\"\n\t\t\t],\n\t\t\t\"editable_fields\": {\n\t\t\t\t\"offer_crp_markdown\": true\n\t\t\t}\n\t\t\t\n\t\t},\n\t\t{\n\t\t\t\"offer_id\": 4,\n\t\t\t\"participate\": true,\n\t\t\t\"change_reason\": \"New Offer\",\n\t\t\t\"change_effective_date\": \"2019-11-31T23:59:59Z\",\n\t\t\t\"offer_name\": \"PRM 12 oz Water 2/$2.50\",\n\t\t\t\"offer_description\": \"PROMO Get 2 12oz Drink for $2.50\",\n\t\t\t\"offer_srp_markdown\": 800,\n\t\t\t\"offer_crp_markdown\": null,\n\t\t\t\"start_date\": \"2019-10-31T23:59:59Z\",\n\t\t\t\"end_date\": \"2020-02-31T23:59:59Z\",\n\t\t\t\"items_applied\": [\n\t\t\t\t\"300827\",\n\t\t\t\t\"300828\",\n\t\t\t\t\"300829\",\n\t\t\t\t\"300830\",\n\t\t\t\t\"300831\",\n\t\t\t\t\"300832\"\n\t\t\t],\n\t\t\t\"editable_fields\": {\n\t\t\t\t\"offer_crp_markdown\": true\n\t\t\t}\n\t\t}\n\t]\n}"
+						},
+						{
+							"name": "Get Offers (Short)",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "Bearer {{user_token}}"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/ris/store-offers",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"ris",
+										"store-offers"
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": "{\n\t\"offers\":[\n\t\t{\n\t\t\t\"offer_id\":1, \n\t\t\t\"participate\": true,\n\t\t\t\"change_reason\": \"Price Changed\",\n\t\t\t\"offer_name\":  \"PRM 12 oz Fruit 2/$2.50\",\n\t\t\t\"offer_description\": \"PROMO Get 2 12oz Drink for $2.50\",\n\t\t\t\"start_date\": \"2019-10-31T23:59:59Z\",\n\t\t\t\"end_date\": \"2019-12-31T23:59:59Z\"\n\t\t\t\n\t\t},\n\t\t{\n\t\t\t\"offer_id\":2, \n\t\t\t\"participate\": true,\n\t\t\t\"change_reason\": \"Date Changed\",\n\t\t\t\"offer_name\":  \"PRM 12 oz Drink 2/$2.50\",\n\t\t\t\"offer_description\": \"PROMO Get 2 12oz Drink for $2.50\",\n\t\t\t\"start_date\": \"2019-9-31T23:59:59Z\",\n\t\t\t\"end_date\": \"2020-01-31T23:59:59Z\"\n\t\t\t\n\t\t},\n\t\t{\n\t\t\t\"offer_id\":3, \n\t\t\t\"participate\": true,\n\t\t\t\"change_reason\": \"New Offer\" ,\n\t\t\t\"offer_name\":  \"PRM 12 oz Coffee 2/$2.50\",\n\t\t\t\"offer_description\": \"PROMO Get 2 12oz Drink for $2.50\",\n\t\t\t\"start_date\": \"2019-10-31T23:59:59Z\",\n\t\t\t\"end_date\": \"2020-02-31T23:59:59Z\"\n\t\t\t\n\t\t},\n\t\t{\n\t\t\t\"offer_id\": 4,\n\t\t\t\"participate\": true,\n\t\t\t\"change_reason\": \"New Offer\",\n\t\t\t\"offer_name\": \"PRM 12 oz Water 2/$2.50\",\n\t\t\t\"offer_description\": \"PROMO Get 2 12oz Drink for $2.50\",\n\t\t\t\"start_date\": \"2019-10-31T23:59:59Z\",\n\t\t\t\"end_date\": \"2020-02-31T23:59:59Z\"\n\t\t}\n\t]\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Offer Details",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{user_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/ris/store-offers/2?",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"ris",
+								"store-offers",
+								"2"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "6",
+									"disabled": true
+								}
+							]
+						},
+						"description": "Details of one Promo. On refresh of https://app.zeplin.io/project/5cf563c15b623413415c820c/screen/5db1c3a1a165755768b6d23a page"
+					},
+					"response": [
+						{
+							"name": "Get Offer Details",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "Bearer {{user_token}}"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/ris/store-offers/2",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"ris",
+										"store-offers",
+										"2"
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": "{\n\t\t\t\"offer_id\": 2,\n\t\t\t\"participate\": true,\n\t\t\t\"change_reason\": \"Date Changed\",\n\t\t\t\"change_effective_date\": \"2019-11-31T23:59:59Z\",\n\t\t\t\"offer_name\": \"PRM 12 oz Drink 2/$2.50\",\n\t\t\t\"offer_description\": \"PROMO Get 2 12oz Drink for $2.50\",\n\t\t\t\"offer_srp_markdown\": 800,\n\t\t\t\"offer_crp_markdown\": null,\n\t\t\t\"start_date\": \"2019-9-31T23:59:59Z\",\n\t\t\t\"end_date\": \"2020-01-31T23:59:59Z\",\n\t\t\t\"items_applied\": [\n\t\t\t\t\t\t\"300827\",\n\t\t\t\t\t\t\"300828\",\n\t\t\t\t\t\t\"300829\",\n\t\t\t\t\t\t\"300830\",\n\t\t\t\t\t\t\"300831\",\n\t\t\t\t\t\t\"300832\"\n\t\t\t],\n\t\t\t\"editable_fields\": {\n\t\t\t\t\"offer_crp_markdown\": true,\n\t\t\t\t\"participate\": true\n\t\t\t}\n\t\t}"
+						}
+					]
+				},
+				{
+					"name": "Update Offer",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{user_token}}"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"offer_crp_markdown\": 850,\n\t\"participate\": true\n}"
+						},
+						"url": {
+							"raw": "{{url}}/ris/store-offers/2",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"ris",
+								"store-offers",
+								"2"
+							]
+						},
+						"description": "Update CRP price. This will create a new promo for that particular store with new crp price. And this will be called from Offer View Page. If only participate is sent in the request then just update the existing offer else  create a new offer. https://app.zeplin.io/project/5cf563c15b623413415c820c/screen/5d9f5de4ae6da730a32b518c"
+					},
+					"response": [
+						{
+							"name": "PUT - Update Promotion",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "Bearer {{user_token}}"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"offer_crp_markdown\": 850,\n\t\"participate\": true\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/ris/store-offers/2",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"ris",
+										"store-offers",
+										"2"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/html; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 04 Nov 2019 19:13:55 GMT"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"262-JKion8K+ebQWyitE1xJnLcYqPkA\""
+								},
+								{
+									"key": "Server",
+									"value": "nginx"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "x-srv-span",
+									"value": "v=1;s=b1be4ae07d577da9"
+								},
+								{
+									"key": "x-srv-trace",
+									"value": "v=1;t=08a2f7114d9eccc9"
+								},
+								{
+									"key": "Content-Length",
+									"value": "319"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n\"offer_id\": 5,\n\"participate\": true,\n\"change_reason\": \"Date Changed\",\n\"change_effective_date\": \"2019-11-31T23:59:59Z\",\n\"offer_name\": \"PRM 12 oz Drink 2/$2.50\",\n\"offer_description\": \"PROMO Get 2 12oz Drink for $2.50\",\n\"offer_srp_markdown\": 800,\n\"offer_crp_markdown\": 850,\n\"start_date\": \"2019-9-31T23:59:59Z\",\n\"end_date\": \"2020-01-31T23:59:59Z\",\n\"items_applied\": [\n\"300827\",\n\"300828\",\n\"300829\",\n\"300830\",\n\"300831\",\n\"300832\"\n],\n\"editable_fields\": {\n\"offer_crp_markdown\": true,\n\"participate\": true\n}\n}"
+						}
+					]
+				},
+				{
+					"name": "Update Participation",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n\t{\n\t\t\"offer_id\": 1, \"participate\": true\n\t\t\n\t},\n\t{\n\t\t\"offer_id\": 2, \"participate\": true\n\t\t\n\t},\n\t{\n\t\t\"offer_id\": 3, \"participate\": true\n\t\t\n\t},\n\t{\n\t\t\"offer_id\": 4, \"participate\": true\n\t\t\n\t}\n]"
+						},
+						"url": {
+							"raw": "{{url}}/ris/store-offers/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"ris",
+								"store-offers",
+								""
+							]
+						},
+						"description": "Requested when updating bulk or one store offer participation.  https://app.zeplin.io/project/5cf563c15b623413415c820c/screen/5d9f5de4f7b81a3043f25cda"
+					},
+					"response": [
+						{
+							"name": "Update Participation",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "[\n\t{\n\t\t\"offer_id\": 1, \"participate\": true\n\t\t\n\t},\n\t{\n\t\t\"offer_id\": 2, \"participate\": true\n\t\t\n\t},\n\t{\n\t\t\"offer_id\": 3, \"participate\": true\n\t\t\n\t},\n\t{\n\t\t\"offer_id\": 4, \"participate\": true\n\t\t\n\t}\n]",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/ris/store-offers/",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"ris",
+										"store-offers",
+										""
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": "{\n    \"offers\": [\n        {\n            \"offer_id\": 1,\n            \"participate\": true,\n            \"change_reason\": \"Price Changed\",\n            \"change_effective_date\": \"2019-11-31T23:59:59Z\",\n            \"offer_name\": \"PRM 12 oz Fruit 2/$2.50\",\n            \"offer_description\": \"PROMO Get 2 12oz Drink for $2.50\",\n            \"offer_srp_markdown\": 800,\n            \"offer_crp_markdown\": 850,\n            \"start_date\": \"2019-10-31T23:59:59Z\",\n            \"end_date\": \"2019-12-31T23:59:59Z\",\n            \"items_applied\": [\n                \"300827\",\n                \"300828\",\n                \"300829\",\n                \"300830\",\n                \"300831\",\n                \"300832\"\n            ],\n            \"editable_fields\": {\n                \"offer_crp_markdown\": true,\n                \"participate\": true\n            }\n        },\n        {\n            \"offer_id\": 2,\n            \"participate\": true,\n            \"change_reason\": \"Date Changed\",\n            \"change_effective_date\": \"2019-11-31T23:59:59Z\",\n            \"offer_name\": \"PRM 12 oz Drink 2/$2.50\",\n            \"offer_description\": \"PROMO Get 2 12oz Drink for $2.50\",\n            \"offer_srp_markdown\": 800,\n            \"offer_crp_markdown\": null,\n            \"start_date\": \"2019-9-31T23:59:59Z\",\n            \"end_date\": \"2020-01-31T23:59:59Z\",\n            \"items_applied\": [\n                \"300827\",\n                \"300828\",\n                \"300829\",\n                \"300830\",\n                \"300831\",\n                \"300832\"\n            ],\n            \"editable_fields\": {\n                \"offer_crp_markdown\": true,\n                \"participate\": true\n            }\n        },\n        {\n            \"offer_id\": 3,\n            \"participate\": true,\n            \"change_reason\": \"New Offer\",\n            \"change_effective_date\": \"2019-11-31T23:59:59Z\",\n            \"offer_name\": \"PRM 12 oz Coffee 2/$2.50\",\n            \"offer_description\": \"PROMO Get 2 12oz Drink for $2.50\",\n            \"offer_srp_markdown\": 800,\n            \"offer_crp_markdown\": null,\n            \"start_date\": \"2019-10-31T23:59:59Z\",\n            \"end_date\": \"2020-02-31T23:59:59Z\",\n            \"items_applied\": [\n                \"300827\",\n                \"300828\",\n                \"300829\",\n                \"300830\",\n                \"300831\",\n                \"300832\"\n            ],\n            \"editable_fields\": {\n                \"offer_crp_markdown\": true\n            }\n        },\n        {\n            \"offer_id\": 4,\n            \"participate\": true,\n            \"change_reason\": \"New Offer\",\n            \"change_effective_date\": \"2019-11-31T23:59:59Z\",\n            \"offer_name\": \"PRM 12 oz Water 2/$2.50\",\n            \"offer_description\": \"PROMO Get 2 12oz Drink for $2.50\",\n            \"offer_srp_markdown\": 800,\n            \"offer_crp_markdown\": null,\n            \"start_date\": \"2019-10-31T23:59:59Z\",\n            \"end_date\": \"2020-02-31T23:59:59Z\",\n            \"items_applied\": [\n                \"300827\",\n                \"300828\",\n                \"300829\",\n                \"300830\",\n                \"300831\",\n                \"300832\"\n            ],\n            \"editable_fields\": {\n                \"offer_crp_markdown\": true\n            }\n        }\n    ]\n}"
+						}
+					]
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{current.platform.token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "971c9173-18bd-4aac-986a-ed368ab5c94b",
+				"type": "text/javascript",
+				"exec": [
+					"// All requests in the Public APIs collection run this script first",
+					"",
+					"// Look for a platform being set in the global variables",
+					"// Options should only be [ios, android, store_cfd]",
+					"var platform = pm.globals.get(\"current.platform\");",
+					"",
+					"if (platform) {",
+					"    ",
+					"    // Apply our authentication client_id and client_secret based on the platform set.",
+					"    pm.globals.set(\"current.platform.client_id\", pm.globals.get(platform + \".client_id\"))",
+					"    pm.globals.set(\"current.platform.client_secret\", pm.globals.get(platform + \".client_secret\"))",
+					"    ",
+					"    // Set extra headers because we have a platform set",
+					"    console.log('Configuring Platform: `' + platform + '`')",
+					"    pm.request.headers.add(platform, 'X-SEI-PLATFORM')",
+					"    ",
+					"    if (['ios', 'android'].includes(platform)) {",
+					"        // Set Mobile App Version and Device Headers",
+					"        console.log('Mobile App platform headers being set.')",
+					"        ",
+					"        // X-SEI-VERSION",
+					"        // TODO: Check for existing header values",
+					"        pm.globals.set(\"current.platform.version\", pm.globals.get(platform + \".version\"))",
+					"        pm.request.headers.add(pm.globals.get(\"current.platform.version\"), 'X-SEI-VERSION')",
+					"        ",
+					"        // X-SEI-DEVICE-OS",
+					"        // TODO: Check for existing header values",
+					"        pm.globals.set(\"current.platform.device_os\", pm.globals.get(platform + \".device_os\"))",
+					"        pm.request.headers.add(pm.globals.get(\"current.platform.device_os\"), 'X-SEI-DEVICE-OS')",
+					"        ",
+					"        // X-SEI-DEVICE-ID",
+					"        // TODO: Check for existing header values",
+					"        pm.globals.set(\"current.platform.device_id\", pm.globals.get(platform + \".device_id\"))",
+					"        pm.request.headers.add(pm.globals.get(\"current.platform.device_id\"), 'X-SEI-DEVICE-ID')",
+					"        ",
+					"    } else if(['store', 'store_cfd']) {",
+					"        // Set Appropriate CFD Headers",
+					"        console.log('Store platform headers being set.')",
+					"    }",
+					" ",
+					"} else {",
+					"    console.log('No platform was set. Skipping extra headers', platform, pm)",
+					"}",
+					"",
+					"console.log('PreRequest Script Complete!', pm.request)"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "6ebe89f5-8913-4e35-98a0-edfc26dc9982",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"protocolProfileBehavior": {}
+}

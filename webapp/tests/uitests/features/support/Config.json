@@ -1,0 +1,22 @@
+{
+    "environments":
+   [{
+        "Environment":"DEV",
+        "StoreNo":"18473",
+        "UserId":"40",
+        "TimeZone":"America/Chicago",
+        "BOSSURL":"http://localhost:3000/#/7boss/home",
+        "APIURL":"https://eit330tle4.execute-api.us-east-1.amazonaws.com/live",
+        "APIKEY":"QqTv0ITd2CaUms64YTD6V9qCed9VWEeG6g14lwia"
+    },
+
+   {
+        "Environment":"QA",
+        "StoreNo":"35408",
+        "UserId":"1",
+        "TimeZone":"America/Chicago",
+        "BOSSURL":"https://www.google.com/",
+        "APIURL":"https://2pcs7pxsml.execute-api.us-east-1.amazonaws.com/live",
+        "APIKEY":"NcmjIipqVq2woOQICZRRQ4Cd71prArwIaS9aneQ6"
+    }]
+}
